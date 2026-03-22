@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amin Resto – Seafood & Chinese Food, Surabaya</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,700;1,500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red:      #C0392B;
+    --red-dk:   #a02d1e;
+    --red-pale: #FDF0EE;
+    --gold:     #B8860B;
+    --gold-lt:  #D4A017;
+    --ink:      #2C1A0E;
+    --body:     #5A3E28;
+    --bg:       #FFFBF5;
+    --bg2:      #FFF5E6;
+    --bg3:      #FEF0DC;
+    --border:   #E8D5B7;
+    --white:    #FFFFFF;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--body); overflow-x: hidden; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 16px 48px;
+    background: rgba(255,251,245,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 2px 16px rgba(192,57,43,0.06);
+  }
+  .nav-logo { font-family: 'Playfair Display', serif; font-size: 22px; font-style: italic; color: var(--red); }
+  .nav-logo span { color: var(--ink); font-style: normal; }
+  .nav-links { display: flex; gap: 36px; list-style: none; align-items: center; }
+  .nav-links a { text-decoration: none; color: var(--body); font-size: 13px; font-weight: 500; letter-spacing: 1px; text-transform: uppercase; transition: color .2s; }
+  .nav-links a:hover { color: var(--red); }
+  .nav-cta { background: var(--red) !important; color: var(--white) !important; padding: 9px 22px; border-radius: 4px; }
+  .nav-cta:hover { background: var(--red-dk) !important; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh; position: relative;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center; overflow: hidden; padding: 0 24px;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: url('https://images.unsplash.com/photo-1563245372-f21724e3856d?w=1600&q=80') center/cover no-repeat;
+  }
+  .hero-bg::before {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(20,8,4,0.52) 0%,
+      rgba(20,8,4,0.42) 45%,
+      rgba(20,8,4,0.68) 100%
+    );
+  }
+  .hero-bg::after {
+    content: '福'; position: absolute; right: 5%; bottom: 5%;
+    font-size: 280px; color: rgba(255,255,255,0.06); line-height: 1; pointer-events: none;
+  }
+  .hero-pattern {
+    position: absolute; inset: 0; pointer-events: none;
+    background-image:
+      repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(184,134,11,0.05) 40px),
+      repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(184,134,11,0.05) 40px);
+  }
+  .hero-content { position: relative; z-index: 2; }
+  .hero-badge {
+    display: inline-block; border: 1.5px solid rgba(255,255,255,0.7); color: #fff;
+    font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+    padding: 6px 20px; border-radius: 2px; margin-bottom: 28px;
+    background: rgba(255,255,255,0.1); animation: fadeUp .8s ease both;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(52px, 9vw, 96px); font-weight: 700; line-height: 1;
+    color: #fff; letter-spacing: -1px; text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+    animation: fadeUp .8s .15s ease both;
+  }
+  .hero h1 em { font-style: italic; color: var(--gold-lt); display: block; font-size: .62em; }
+  .hero-sub { margin-top: 20px; font-size: 15px; color: rgba(255,255,255,0.85); line-height: 1.7; animation: fadeUp .8s .3s ease both; }
+  .hero-rating { margin-top: 20px; display: flex; align-items: center; justify-content: center; gap: 8px; animation: fadeUp .8s .42s ease both; }
+  .stars { color: var(--gold-lt); font-size: 18px; }
+  .rating-text { font-size: 13px; color: rgba(255,255,255,0.75); }
+  .hero-actions { margin-top: 40px; display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; animation: fadeUp .8s .55s ease both; }
+
+  .btn-primary { background: var(--red); color: var(--white); padding: 14px 36px; border-radius: 4px; text-decoration: none; font-weight: 600; font-size: 13px; letter-spacing: 1.5px; text-transform: uppercase; transition: all .2s; display: inline-block; box-shadow: 0 4px 20px rgba(192,57,43,0.25); }
+  .btn-primary:hover { background: var(--red-dk); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(192,57,43,0.3); }
+  .btn-ghost { border: 1.5px solid var(--gold); color: var(--gold); padding: 14px 36px; border-radius: 4px; text-decoration: none; font-weight: 600; font-size: 13px; letter-spacing: 1.5px; text-transform: uppercase; transition: all .2s; display: inline-block; }
+  .btn-ghost:hover { background: var(--gold); color: var(--white); }
+
+  .scroll-hint { position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 8px; color: var(--body); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; opacity: .4; animation: fadeUp 1s .9s ease both; }
+  .scroll-line { width: 1px; height: 40px; background: var(--red); animation: lineGrow 1.5s 1.2s ease infinite; }
+
+  /* STRIP */
+  .strip { background: var(--red); padding: 18px 48px; display: flex; align-items: center; justify-content: center; gap: 40px; flex-wrap: wrap; }
+  .strip-item { color: rgba(255,255,255,0.9); font-size: 13px; letter-spacing: .5px; font-weight: 500; }
+  .strip-dot { color: rgba(255,255,255,0.3); font-size: 20px; }
+
+  /* SECTION */
+  section { padding: 96px 48px; }
+  .section-tag { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--red); margin-bottom: 10px; font-weight: 600; }
+  .section-title { font-family: 'Playfair Display', serif; font-size: clamp(30px, 4.5vw, 50px); font-weight: 700; line-height: 1.2; color: var(--ink); }
+  .section-title em { font-style: italic; color: var(--red); }
+  .divider { width: 56px; height: 3px; background: var(--gold); margin: 18px 0 32px; border-radius: 2px; }
+
+  /* ABOUT */
+  .about { background: var(--bg2); }
+  .about-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+  .about-text p { font-size: 15px; line-height: 1.9; color: var(--body); margin-bottom: 16px; }
+  .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 40px; }
+  .stat-box { border: 1.5px solid var(--border); padding: 22px 18px; border-radius: 8px; background: var(--white); box-shadow: 0 2px 12px rgba(184,134,11,0.06); }
+  .stat-num { font-family: 'Playfair Display', serif; font-size: 34px; font-weight: 700; color: var(--red); line-height: 1; }
+  .stat-label { font-size: 11px; letter-spacing: 1.5px; color: var(--body); margin-top: 4px; text-transform: uppercase; opacity: .7; }
+  .about-card { background: var(--white); border-radius: 12px; padding: 48px 40px; text-align: center; position: relative; overflow: hidden; box-shadow: 0 8px 40px rgba(192,57,43,0.1); border: 1.5px solid var(--border); }
+  .about-card::before { content: '囍'; position: absolute; top: -20px; right: -10px; font-size: 160px; opacity: .04; line-height: 1; color: var(--red); }
+  .about-card-icon { font-size: 64px; margin-bottom: 20px; }
+  .about-card h3 { font-family: 'Playfair Display', serif; font-size: 22px; color: var(--ink); margin-bottom: 10px; }
+  .about-card p { font-size: 14px; color: var(--body); line-height: 1.7; }
+  .about-card-badge { display: inline-block; background: var(--red-pale); color: var(--red); font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; padding: 5px 14px; border-radius: 20px; margin-top: 20px; font-weight: 600; }
+
+  /* MENU */
+  .menu { background: var(--bg); }
+  .menu-inner { max-width: 1100px; margin: 0 auto; }
+  .menu-header { text-align: center; margin-bottom: 56px; }
+  .menu-header .divider { margin: 18px auto 20px; }
+  .menu-tabs { display: flex; gap: 8px; margin-bottom: 48px; justify-content: center; flex-wrap: wrap; }
+  .tab-btn { background: var(--white); border: 1.5px solid var(--border); color: var(--body); padding: 10px 26px; border-radius: 40px; font-family: 'DM Sans', sans-serif; font-size: 13px; cursor: pointer; transition: all .2s; font-weight: 500; }
+  .tab-btn.active, .tab-btn:hover { background: var(--red); color: var(--white); border-color: var(--red); box-shadow: 0 4px 16px rgba(192,57,43,0.2); }
+  .menu-grid { display: none; }
+  .menu-grid.active { display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap: 12px; }
+  .menu-item { display: flex; justify-content: space-between; align-items: flex-start; padding: 18px 22px; border-radius: 8px; border: 1.5px solid var(--border); background: var(--white); transition: all .2s; box-shadow: 0 1px 6px rgba(0,0,0,0.04); }
+  .menu-item:hover { border-color: var(--red); box-shadow: 0 4px 16px rgba(192,57,43,0.1); transform: translateY(-1px); }
+  .item-name { font-size: 15px; font-weight: 500; color: var(--ink); margin-bottom: 3px; }
+  .item-note { font-size: 12px; color: var(--body); opacity: .6; font-style: italic; }
+  .item-price { font-family: 'Playfair Display', serif; font-size: 15px; color: var(--red); white-space: nowrap; margin-left: 16px; padding-top: 2px; font-weight: 700; }
+  .price-market { font-size: 11px; color: var(--gold); letter-spacing: 1px; text-transform: uppercase; font-weight: 600; font-family: 'DM Sans', sans-serif; }
+
+  /* INFO */
+  .info { background: var(--bg3); }
+  .info-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+  .info-card { padding: 36px 28px; border-radius: 12px; background: var(--white); border: 1.5px solid var(--border); box-shadow: 0 2px 16px rgba(0,0,0,0.05); transition: box-shadow .2s; }
+  .info-card:hover { box-shadow: 0 8px 32px rgba(192,57,43,0.1); }
+  .info-icon-wrap { width: 48px; height: 48px; border-radius: 12px; background: var(--red-pale); display: flex; align-items: center; justify-content: center; font-size: 22px; margin-bottom: 18px; }
+  .info-label { font-size: 11px; letter-spacing: 2px; color: var(--red); text-transform: uppercase; margin-bottom: 10px; font-weight: 600; }
+  .info-value { font-size: 15px; color: var(--body); line-height: 1.75; }
+  .info-value strong { color: var(--ink); }
+  .info-value a { color: var(--red); text-decoration: none; font-weight: 500; }
+  .info-value a:hover { text-decoration: underline; }
+
+  /* CTA */
+  .cta { background: linear-gradient(135deg, var(--red) 0%, #8B1A1A 100%); text-align: center; padding: 80px 48px; position: relative; overflow: hidden; }
+  .cta::before { content: '福'; position: absolute; left: -40px; top: 50%; transform: translateY(-50%); font-size: 380px; opacity: .05; line-height: 1; color: var(--white); }
+  .cta::after  { content: '福'; position: absolute; right: -40px; top: 50%; transform: translateY(-50%); font-size: 380px; opacity: .05; line-height: 1; color: var(--white); }
+  .cta-inner { position: relative; }
+  .cta h2 { font-family: 'Playfair Display', serif; font-size: clamp(28px, 4.5vw, 46px); color: var(--white); margin-bottom: 14px; }
+  .cta p { color: rgba(255,255,255,0.8); margin-bottom: 36px; font-size: 15px; }
+  .btn-white { background: var(--white); color: var(--red); padding: 14px 36px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 13px; letter-spacing: 1px; text-transform: uppercase; display: inline-block; transition: all .2s; box-shadow: 0 4px 20px rgba(0,0,0,0.15); }
+  .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,0.2); }
+  .btn-outline-white { border: 2px solid rgba(255,255,255,0.6); color: var(--white); padding: 14px 36px; border-radius: 4px; text-decoration: none; font-weight: 600; font-size: 13px; letter-spacing: 1px; text-transform: uppercase; display: inline-block; transition: all .2s; }
+  .btn-outline-white:hover { background: rgba(255,255,255,0.15); border-color: var(--white); }
+
+  /* FOOTER */
+  footer { background: var(--ink); padding: 36px 48px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+  .footer-logo { font-family: 'Playfair Display', serif; font-style: italic; font-size: 20px; color: var(--gold-lt); }
+  .footer-copy { font-size: 12px; color: rgba(255,251,245,0.3); }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes lineGrow { 0%,100% { transform: scaleY(1); opacity: .5; } 50% { transform: scaleY(1.5); opacity: 1; } }
+
+  @media (max-width: 900px) {
+    nav { padding: 14px 20px; }
+    .nav-links { display: none; }
+    section { padding: 64px 20px; }
+    .strip { gap: 20px; padding: 16px 20px; }
+    .about-inner { grid-template-columns: 1fr; gap: 40px; }
+    .info-inner { grid-template-columns: 1fr; }
+    footer { flex-direction: column; text-align: center; }
+  }
+  @media (max-width: 600px) {
+    .about-stats { grid-template-columns: 1fr 1fr; }
+    .menu-grid.active { grid-template-columns: 1fr; }
+    .hero-actions { flex-direction: column; align-items: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo"><em>Amin</em> <span>Resto</span></div>
+  <ul class="nav-links">
+    <li><a href="#tentang">Tentang</a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#info">Lokasi</a></li>
+    <li><a href="tel:+6282336085596" class="nav-cta">Hubungi Kami</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-pattern"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Seafood & Chinese Food · Surabaya</div>
+    <h1>Amin<em>Resto</em></h1>
+    <p class="hero-sub">Cita rasa autentik masakan Tionghoa dan seafood segar<br>di jantung Kota Surabaya</p>
+    <div class="hero-rating">
+      <span class="stars">★★★★★</span>
+      <span class="rating-text">4.8 · 50+ Ulasan Google</span>
+    </div>
+    <div class="hero-actions">
+      <a href="#menu" class="btn-primary">Lihat Menu</a>
+      <a href="#info" class="btn-ghost">Temukan Kami</a>
+    </div>
+  </div>
+  <div class="scroll-hint"><span>Scroll</span><div class="scroll-line"></div></div>
+</section>
+
+<div class="strip">
+  <span class="strip-item">🍜 &nbsp;Dine-in & Takeout</span>
+  <span class="strip-dot">·</span>
+  <span class="strip-item">📍 &nbsp;Jl. Ketampon, Surabaya</span>
+  <span class="strip-dot">·</span>
+  <span class="strip-item">⏰ &nbsp;Buka s/d Pukul 22.00</span>
+  <span class="strip-dot">·</span>
+  <span class="strip-item">📞 &nbsp;+62 823-3608-5596</span>
+</div>
+
+<section class="about" id="tentang">
+  <div class="about-inner">
+    <div class="about-text">
+      <div class="section-tag">Tentang Kami</div>
+      <h2 class="section-title">Masakan Tionghoa<br><em>yang Otentik</em></h2>
+      <div class="divider"></div>
+      <p>Amin Resto hadir dengan semangat menyajikan masakan Tionghoa dan seafood segar yang kaya rasa. Setiap hidangan kami diracik dengan bahan-bahan pilihan dan bumbu khas yang menghadirkan cita rasa autentik warisan kuliner Tionghoa.</p>
+      <p>Dari sop hangat yang menyegarkan, tumisan lezat, hingga aneka seafood spesial — semuanya tersedia untuk memanjakan selera Anda bersama keluarga dan rekan.</p>
+      <div class="about-stats">
+        <div class="stat-box"><div class="stat-num">4.8</div><div class="stat-label">Rating Google</div></div>
+        <div class="stat-box"><div class="stat-num">50+</div><div class="stat-label">Ulasan Puas</div></div>
+        <div class="stat-box"><div class="stat-num">30+</div><div class="stat-label">Menu Pilihan</div></div>
+        <div class="stat-box"><div class="stat-num">22.00</div><div class="stat-label">Buka Setiap Hari</div></div>
+      </div>
+    </div>
+    <div>
+      <div class="about-card">
+        <div class="about-card-icon">🍜</div>
+        <h3>Dine-in & Takeout</h3>
+        <p>Nikmati hidangan kami langsung di tempat yang nyaman, atau bawa pulang untuk dinikmati bersama keluarga.</p>
+        <span class="about-card-badge">Tersedia Setiap Hari</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="menu" id="menu">
+  <div class="menu-inner">
+    <div class="menu-header">
+      <div class="section-tag">Pilihan Hidangan</div>
+      <h2 class="section-title">Menu <em>Kami</em></h2>
+      <div class="divider"></div>
+      <p style="color:var(--body); font-size:14px; opacity:.7;">Semua harga dalam Rupiah (IDR). Harga sudah termasuk pajak.</p>
+    </div>
+    <div class="menu-tabs">
+      <button class="tab-btn active" onclick="showTab('sop',this)">Sop & Sayuran</button>
+      <button class="tab-btn" onclick="showTab('mie',this)">Mie & Nasi</button>
+      <button class="tab-btn" onclick="showTab('minuman',this)">Minuman</button>
+    </div>
+    <div class="menu-grid active" id="tab-sop">
+      <div class="menu-item"><div><div class="item-name">Hiwan Hipio</div></div><div class="item-price">100.000</div></div>
+      <div class="menu-item"><div><div class="item-name">Hiwan Tahu</div></div><div class="item-price">60.000</div></div>
+      <div class="menu-item"><div><div class="item-name">Tomyam Seafood</div></div><div class="item-price">110.000</div></div>
+      <div class="menu-item"><div><div class="item-name">Kepala Sayur Asin</div></div><div class="item-price">95.000</div></div>
+      <div class="menu-item"><div><div class="item-name">Kepala Kare</div></div><div class="item-price"><span class="price-market">Harga Pasar</span></div></div>
+      <div class="menu-item"><div><div class="item-name">Cap Cay</div></div><div class="item-price">70.000</div></div>
+      <div class="menu-item"><div><div class="item-name">Cah Sawi Daging</div></div><div class="item-price">45.000</div></div>
+      <div class="menu-item"><div><div class="item-name">Cah Baby Kol</div></div><div class="item-price">45.000</div></div>
+      <div class="menu-item"><div><div class="item-name">Cah Tauge</div></div><div class="item-price">45.000</div></div>
+      <div class="menu-item"><div><div class="item-name">Cah Kangkung</div></div><div class="item-price">45.000</div></div>
+      <div class="menu-item"><div><div class="item-name">Sapo Tahu</div></div><div class="item-price">70.000</div></div>
+      <div class="menu-item"><div><div class="item-name">Fuyung Hai</div></div><div class="item-price">65.000</div></div>
+      <div class="menu-item"><div><div class="item-name">Sayur Pocay</div></div><div class="item-price">45.000</div></div>
+    </div>
+    <div class="menu-grid" id="tab-mie">
+      <div class="menu-item"><div><div class="item-name">Kwetiaw Goreng</div></div><div class="item-price">45.000</div></div>
+      <div class="menu-item"><div><div class="item-name">Kwetiaw Siram</div></div><div class="item-price">55.000</div></div>
+      <div class="menu-item"><div><div class="item-name">Bakmi Goreng</div></div><div class="item-price">45.000</div></div>
+      <div class="menu-item"><div><div class="item-name">Bakmi Kuah</div></div><div class="item-price">45.000</div></div>
+      <div class="menu-item"><div><div class="item-name">Bihun Goreng</div></div><div class="item-price">45.000</div></div>
+      <div class="menu-item"><div><div class="item-name">Bihun Kuah</div></div><div class="item-price">45.000</div></div>
+      <div class="menu-item"><div><div class="item-name">Tamie Capcay</div></div><div class="item-price">80.000</div></div>
+      <div class="menu-item"><div><div class="item-name">Nasi Goreng</div></div><div class="item-price">45.000</div></div>
+      <div class="menu-item"><div><div class="item-name">Kerang Tauco</div></div><div class="item-price">65.000</div></div>
+    </div>
+    <div class="menu-grid" id="tab-minuman">
+      <div class="menu-item"><div><div class="item-name">Jumbo Teh / Es Teh</div></div><div class="item-price">10.000</div></div>
+      <div class="menu-item"><div><div class="item-name">Es Teh Manis</div></div><div class="item-price">8.000</div></div>
+      <div class="menu-item"><div><div class="item-name">Es Teh Tawar</div></div><div class="item-price">8.000</div></div>
+      <div class="menu-item"><div><div class="item-name">Teh Manis</div></div><div class="item-price">8.000</div></div>
+      <div class="menu-item"><div><div class="item-name">Teh Tawar</div></div><div class="item-price">8.000</div></div>
+      <div class="menu-item"><div><div class="item-name">Jeruk Murni</div></div><div class="item-price">25.000</div></div>
+      <div class="menu-item"><div><div class="item-name">Air Mineral</div></div><div class="item-price">8.000</div></div>
+      <div class="menu-item"><div><div class="item-name">Bir Guinness <span class="item-note">Paket 3 Botol</span></div></div><div class="item-price">165.000</div></div>
+      <div class="menu-item"><div><div class="item-name">Bir Bintang <span class="item-note">Paket 3 Botol</span></div></div><div class="item-price">120.000</div></div>
+      <div class="menu-item"><div><div class="item-name">Bir Bintang</div></div><div class="item-price">45.000</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="info" id="info">
+  <div style="text-align:center; margin-bottom:56px;">
+    <div class="section-tag">Kunjungi Kami</div>
+    <h2 class="section-title">Informasi <em>Restoran</em></h2>
+    <div class="divider" style="margin: 18px auto 0;"></div>
+  </div>
+  <div class="info-inner">
+    <div class="info-card">
+      <div class="info-icon-wrap">📍</div>
+      <div class="info-label">Alamat</div>
+      <div class="info-value">Jl. Ketampon No.70-71<br>DR. Soetomo, Kec. Tegalsari<br>Surabaya, Jawa Timur 60264</div>
+    </div>
+    <div class="info-card">
+      <div class="info-icon-wrap">🕙</div>
+      <div class="info-label">Jam Operasional</div>
+      <div class="info-value">Buka Setiap Hari<br><strong>Sampai Pukul 22.00 WIB</strong><br><br>Dine-in · Takeout</div>
+    </div>
+    <div class="info-card">
+      <div class="info-icon-wrap">📞</div>
+      <div class="info-label">Hubungi Kami</div>
+      <div class="info-value">
+        <a href="tel:+6282336085596">+62 823-3608-5596</a><br><br>
+        <a href="https://wa.me/6282336085596" target="_blank">💬 Chat via WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="cta-inner">
+    <h2>Reservasi atau Pesan Sekarang</h2>
+    <p>Hubungi kami langsung melalui telepon atau WhatsApp untuk reservasi meja dan pemesanan takeout.</p>
+    <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
+      <a href="tel:+6282336085596" class="btn-outline-white">📞 Telepon</a>
+      <a href="https://wa.me/6282336085596" target="_blank" class="btn-white">💬 WhatsApp Kami</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Amin Resto</div>
+  <div class="footer-copy">© 2025 Amin Resto · Seafood & Chinese Food · Surabaya</div>
+</footer>
+
+<script>
+  function showTab(id, btn) {
+    document.querySelectorAll('.menu-grid').forEach(g => g.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-' + id).classList.add('active');
+    btn.classList.add('active');
+  }
+</script>
+</body>
+</html>
